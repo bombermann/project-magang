@@ -1,0 +1,121 @@
+//- //- doctype html
+//- //- html
+//- //-   head
+//- //-     title Daftar Admin
+//- //-   body
+//- //-     h2 Daftar Admin
+//- //-     a(href="/users/add") + Tambah Admin
+//- //-     table(border="1")
+//- //-       tr
+//- //-         th ID
+//- //-         th Username
+//- //-         th Aksi
+//- //-       each admin in admins
+//- //-         tr
+//- //-           td= admin.id
+//- //-           td= admin.username
+//- //-           td
+//- //-             a(href=`/users/edit/${admin.id}`) Edit
+//- //-             form(action=`/users/delete/${admin.id}` method="POST" style="display:inline")
+//- //-               button(type="submit") Hapus
+
+//- extends layout 
+
+//- block content 
+//-     h2 Daftar Admin
+//-     a(href="/users/add") + Tambah Admin
+//-     table(border="1")
+//-       tr
+//-         th ID
+//-         th Username
+//-         th Aksi
+//-       each admin in admins
+//-         tr
+//-           td= admin.id
+//-           td= admin.username
+//-           td
+//-             a(href=`/users/edit/${admin.id}`) Edit
+//-             form(action=`/users/delete/${admin.id}` method="POST" style="display:inline")
+//-               button(type="submit") Hapus
+
+//- extends layout
+
+//- block content
+//-   h2 Daftar Admin Users
+
+//-   a(href="/users/add", class="btn") ➕ Tambah Admin
+//-   br
+//-   br
+
+//-   if admins.length
+//-     table(border='1', cellpadding='10')
+//-       tr
+//-         th Username
+//-         th Aksi
+//-       each admin in admins
+//-         tr
+//-           td= admin.username
+//-           td
+//-             a(href='/users/edit/#{admin.id}') Edit
+//-             //-✏️ Edit
+//-             |  
+//-             a(href='/users/delete/#{admin.id}' onclick="return confirm('Yakin ingin hapus?')") Hapus
+//-             //-❌ Hapus
+//-   else
+//-     p Tidak ada admin ditemukan.
+
+//- extends layout
+
+//- block content
+//-   .container
+//-     .header
+//-       h2(style="color: white") Daftar Admin Users
+//-       .button-group
+//-         a(href="/dashboard", style="margin-right: 10px; background-color: #3498db; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none;") 🏠 Dashboard
+//-         a(href="/users/add", style="background-color: #2ecc71; color: white; padding: 8px 15px; border-radius: 5px; text-decoration: none;") ➕ Tambah Admin
+
+//-     if admins.length
+//-       .table-wrapper(style="max-height: 450px; overflow-y: auto; margin-top: 20px; border: 1px solid #444; border-radius: 6px;")
+//-         table(style="width: 100%; min-width: 600px; border-collapse: collapse; color: white; background-color: #3a3a3a;")
+//-           thead
+//-             tr(style="background-color: #555;")
+//-               th(style="padding: 12px; border: 1px solid #444; text-align: left;") Username
+//-               th(style="padding: 12px; border: 1px solid #444; text-align: left;") Aksi
+//-           tbody
+//-             each admin in admins
+//-               tr(style="background-color: #474747;")
+//-                 td(style="padding: 12px; border: 1px solid #555;")= admin.username
+//-                 td(style="padding: 12px; border: 1px solid #555;")
+//-                   a(href='/users/edit/#{admin.id}', style="color: #3498db; margin-right: 12px; text-decoration: none;") ✏️ Edit
+//-                   a(href='/users/delete/#{admin.id}', onclick="return confirm('Yakin ingin hapus?')", style="color: #e74c3c; text-decoration: none;") ❌ Hapus
+//-     else
+//-       p(style="color: white; margin-top: 20px;") Tidak ada admin ditemukan.
+extends layout
+
+block content
+  .post-page-container(style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: #2c2c3d; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.4); color: white;")
+
+    // Judul Atas
+    h2(style="margin-bottom: 20px; font-size: 24px;") 👨‍🚀 Daftar Admin Users
+
+    // Baris Tombol Horizontal
+    .button-bar(style="display: flex; justify-content: space-between; margin-bottom: 25px;")
+      a(href="/dashboard", style="background-color: #3498db; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;") 🏠 Dashboard
+      a(href="/users/add", style="background-color: #2ecc71; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;") ➕ Tambah Admin
+
+    // Tabel Admin
+    if admins.length
+      table(style="width: 100%; border-collapse: collapse; background-color: #363649; color: white; border-radius: 5px; overflow: hidden;")
+        thead
+          tr(style="background-color: #444;")
+            th(style="padding: 12px; text-align: left;") Username
+            th(style="padding: 12px; text-align: center;") Aksi
+        tbody
+          each admin in admins
+            tr
+              td(style="padding: 10px; border-top: 1px solid #555;")= admin.username
+              td(style="padding: 10px; text-align: center; border-top: 1px solid #555;")
+                a(href="/users/edit/" + admin.id, style="color: #f1c40f; margin-right: 10px; text-decoration: none; font-weight: bold;") ✏️ Edit
+                a(href="/users/delete/" + admin.id, onclick="return confirm('Yakin ingin menghapus admin ini?')", style="color: #e74c3c; text-decoration: none; font-weight: bold;") ❌ Hapus
+    else
+      p(style="text-align: center; color: #ccc; margin-top: 20px;") Tidak ada admin ditemukan.

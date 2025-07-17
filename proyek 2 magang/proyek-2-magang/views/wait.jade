@@ -1,0 +1,81 @@
+//- extends layout
+
+//- block content
+//-   h2 Terlalu Banyak Percobaan Login
+//-   //- p Silakan tunggu #{waitSeconds} detik sebelum mencoba login lagi.
+//-   p#message Silakan tunggu #{waitSeconds} detik sebelum mencoba login lagi.
+
+//-  script.
+//-     let seconds = !{waitSeconds};
+//-     const msg = document.getElementById('message');
+//-     let seconds = parseInt(msg.dataset.seconds);
+
+
+//-     const interval = setInterval(() => {
+//-       seconds--;
+//-       if (seconds <= 0) {
+//-         clearInterval(interval);
+//-         window.location.href = "/auth/login"; // ⬅️ Ganti jika route login kamu beda
+//-       } else {
+//-         msg.textContent = `Silakan tunggu ${seconds} detik sebelum mencoba login lagi.`;
+//-       }
+//-     }, 1000);
+
+//- extends layout
+
+//- block content
+//-   h2 Terlalu Banyak Percobaan Login
+//-   p#message(data-seconds=waitSeconds) Silakan tunggu #{waitSeconds} detik sebelum mencoba login lagi.
+
+//-   script.
+//-     const msg = document.getElementById('message');
+//-     let seconds = parseInt(msg.dataset.seconds);
+
+//-     const interval = setInterval(() => {
+//-       seconds--;
+//-       if (seconds <= 0) {
+//-         clearInterval(interval);
+//-         window.location.href = "/auth/login"; // ⬅️ Ubah sesuai route login lo
+//-       } else {
+//-         msg.textContent = `Silakan tunggu ${seconds} detik sebelum mencoba login lagi.`;
+//-       }
+//-     }, 1000);
+
+extends layout
+
+block content
+  .wait-container(style="max-width: 600px; margin: 100px auto; padding: 30px; background-color: #2c2c3d; border-radius: 12px; box-shadow: 0 0 20px rgba(0,0,0,0.5); text-align: center; color: white; font-family: 'Inter', sans-serif;")
+
+    h2(style="font-size: 24px; margin-bottom: 15px;") 🚫 Terlalu Banyak Percobaan Login
+
+    p#message(
+      data-seconds=waitSeconds,
+      style="font-size: 16px; color: #ccc; margin-bottom: 25px;"
+    ) Silahkan tunggu #{waitSeconds} detik sebelum mencoba login lagi.
+
+    .progress-container(style="width: 100%; height: 15px; background-color: #444; border-radius: 10px; overflow: hidden; box-shadow: inset 0 0 5px #000;")
+      .progress-bar#progressBar(
+        style="height: 100%; background-color: #e74c3c; width: 100%; transition: width 1s linear; box-shadow: 0 0 15px 2px rgba(231, 76, 60, 0.7);"
+          )
+
+    p(style="font-size: 14px; color: #888; margin-top: 15px;") Anda akan diarahkan kembali ke halaman login secara otomatis.
+
+  script.
+    const msg = document.getElementById('message');
+    const progressBar = document.getElementById('progressBar');
+    let seconds = parseInt(msg.dataset.seconds);
+    const total = seconds;
+
+    const interval = setInterval(() => {
+      seconds--;
+      const percent = (seconds / total) * 100;
+      progressBar.style.width = percent + '%';
+
+      if (seconds <= 0) {
+        clearInterval(interval);
+        window.location.href = "/auth/login";
+      } else {
+        msg.textContent = `Silakan tunggu ${seconds} detik sebelum mencoba login lagi.`;
+      }
+    }, 1000);
+

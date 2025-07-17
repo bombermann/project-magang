@@ -1,0 +1,14 @@
+//- Header navigasi untuk semua user login
+//- if currentUser
+//-   div(style="background:#f4f4f4; padding:10px; margin-bottom:20px;")
+//-     p(style="margin:0")
+//-       | 👤 Login sebagai #{currentUser.role} (#{currentUser.username})
+//-       |  | 
+//-       a(href="/dashboard") Dashboard
+//-       |  | 
+//-       a(href="auth/logout") Logout
+//- else
+//-  if title !== 'Login'
+//-   div(style="background:#f4f4f4; padding:10px; margin-bottom:20px;")
+//-     p(style="margin:0")
+//-       a(href="auth/login") Login

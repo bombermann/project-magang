@@ -1,0 +1,56 @@
+//- extends layout
+
+//- block content
+//-   h1 Dashboard
+//-   p Selamat datang, #{currentUser.username}!
+//-   p Role: #{currentUser.role}
+
+//-   if currentUser.role === 'superadmin'
+//-     ul
+//-       li: a(href='/users') ➕ Kelola Admin Users
+//-   else if currentUser.role === 'admin'
+//-     ul
+//-       li: a(href='/profile') 👤 Lihat Profil
+extends layout
+
+block content
+  .dashboard-container
+    // Sidebar
+    .sidebar
+      h2.logo SPACE ✨
+      ul.nav-links
+        li: a(href='/dashboard').active Dashboard
+        if currentUser.role === 'admin'
+          li: a(href='/post') 📩 Postingan
+        else if currentUser.role === 'superadmin'
+          li: a(href='/users') 👑 Admin Users
+        li: a(href='/auth/logout') 🔓 Logout
+
+    // Main content
+    .main-content
+      if currentUser.role === 'admin'
+        //- li: a(href='/post') 📝 Postingan
+        h1 🛠️  Kelola postingan lebih banyak lagi dengan mudah!
+      else if currentUser.role === 'superadmin'
+        //- li: a(href='/users') 👑 Admin Users
+        h1 🧑🏼‍💻 Kontrol Penuh di Ujung Jari Anda!
+      p "Semua yang Anda butuhkan, kini ada di dashboard ini."
+
+      .card
+        h2 👋🏼 Selamat Datang, #{currentUser.username}!
+        p.role-label Role: #{currentUser.role}
+        
+
+        if currentUser.role === 'superadmin'
+          a.button(href='/users') Kelola Admin Users
+        else if currentUser.role === 'admin'
+         
+          a.button(href='/post') Kelola Postingan
+
+      .stats
+        .stat-box
+          h3 📩 #{postCount}
+          p Total Postingan
+        .stat-box
+          h3 👨‍🚀 #{adminCount}
+          p Total Admin

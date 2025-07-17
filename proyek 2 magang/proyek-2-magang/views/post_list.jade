@@ -1,0 +1,109 @@
+//- extends layout
+
+//- block content
+//-   h2 Daftar Postingan
+//-   a(href='/post/add', class='btn') ➕ Tambah Postingan
+//-   br
+//-   br
+
+//-   if posts.length
+//-     table(border='1', cellpadding='10')
+//-       tr
+//-         th Judul
+//-         th Tanggal Dibuat
+//-         th Aksi
+//-       each post in posts
+//-         tr
+//-           td= post.title
+//-           td= post.created_at.toLocaleString()
+//-           td
+//-             a(href='/post/edit/' + post.id) Edit
+//-             form(action='/post/delete/' + post.id, method='POST', style='display:inline')
+//-               button(type='submit', onclick='return confirm("Hapus?")') Hapus
+//-   else
+//-     p Belum ada postingan.
+//- extends layout
+
+//- block content
+//-   .post-page-container(style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: #2c2c3d; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.4); color: white;")
+
+//-     // Judul Atas
+//-     h2(style="margin-bottom: 20px; font-size: 24px;") 📄 Daftar Postingan
+
+//-     // Baris Tombol Horizontal
+//-     .button-bar(style="display: flex; justify-content: space-between; margin-bottom: 25px;")
+//-       a(href="/dashboard", style="background-color: #3498db; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;") 🏠 Dashboard
+//-       a(href="/post/add", style="background-color: #2ecc71; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;") ➕ Tambah Postingan
+
+//-     // Tabel Postingan
+//-     if posts.length
+//-       table(style="width: 100%; border-collapse: collapse; background-color: #363649; color: white; border-radius: 5px; overflow: hidden;")
+//-         thead
+//-           tr(style="background-color: #444;")
+//-             th(style="padding: 12px; text-align: left;") Judul
+//-             th(style="padding: 12px; text-align: left;") Tanggal Dibuat
+//-             th(style="padding: 12px; text-align: center;") Aksi
+//-         tbody
+//-           each post in posts
+//-             tr
+//-               td(style="padding: 10px; border-top: 1px solid #555;")= post.title
+//-               td(style="padding: 10px; border-top: 1px solid #555;")= post.created_at.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })
+//-               td(style="padding: 10px; text-align: center; border-top: 1px solid #555;")
+//-                 a(href="/post/edit/" + post.id, style="color: #f1c40f; margin-right: 10px; text-decoration: none; font-weight: bold;") ✏️ Edit
+//-                 form(action="/post/delete/" + post.id, method="POST", style="display:inline")
+//-                   button(type="submit", onclick="return confirm('Yakin ingin menghapus postingan ini?')", style="background: none; border: none; color: #e74c3c; cursor: pointer; font-weight: bold;") ❌ Hapus
+//-     else
+//-       p(style="text-align: center; color: #ccc; margin-top: 20px;") Belum ada postingan.
+
+extends layout
+
+block content
+  .post-page-container(
+    style="max-width: 900px; margin: 50px auto; padding: 30px; background-color: #2c2c3d; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.4); color: white;"
+  )
+    // Judul Atas
+    h2(style="margin-bottom: 20px; font-size: 24px;") 📩 Daftar Postingan
+
+    // Baris Tombol Horizontal
+    .button-bar(style="display: flex; justify-content: space-between; margin-bottom: 25px;")
+      a(
+        href="/dashboard",
+        style="background-color: #3498db; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;"
+      ) 🏠 Dashboard
+      a(
+        href="/post/add",
+        style="background-color: #2ecc71; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;"
+      ) ➕ Tambah Postingan
+
+    // Tabel Postingan
+    if posts.length
+      table(
+        style="width: 100%; border-collapse: collapse; background-color: #363649; color: white; border-radius: 5px; overflow: hidden;"
+      )
+        thead
+          tr(style="background-color: #444;")
+            th(style="padding: 12px; text-align: left;") Judul
+            th(style="padding: 12px; text-align: left;") Konten
+            th(style="padding: 12px; text-align: left;") Tanggal Dibuat
+            th(style="padding: 12px; text-align: center;") Aksi
+        tbody
+          each post in posts
+            tr
+              td(style="padding: 10px; border-top: 1px solid #555;")= post.title
+              td(style="padding: 10px; border-top: 1px solid #555; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;")
+                = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content
+              td(style="padding: 10px; border-top: 1px solid #555;")
+                = post.created_at.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' })
+              td(style="padding: 10px; text-align: center; border-top: 1px solid #555;")
+                a(
+                  href="/post/edit/" + post.id,
+                  style="color: #f1c40f; margin-right: 10px; text-decoration: none; font-weight: bold;"
+                ) ✏️ Edit
+                form(action="/post/delete/" + post.id, method="POST", style="display:inline")
+                  button(
+                    type="submit",
+                    onclick="return confirm('Yakin ingin menghapus postingan ini?')",
+                    style="background: none; border: none; color: #e74c3c; cursor: pointer; font-weight: bold;"
+                  ) ❌ Hapus
+    else
+      p(style="text-align: center; color: #ccc; margin-top: 20px;") Belum ada postingan.

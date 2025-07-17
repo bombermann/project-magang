@@ -1,0 +1,86 @@
+doctype html
+html
+  head
+    title= title
+
+    //- // ✅ Google Fonts - Inter
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap")
+
+    //- // ✅ Global Style pakai font Inter
+    style.
+      * {
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #1e1e2f;
+        color: white;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      h1, h2, h3, h4, h5 {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #363649;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      th, td {
+        padding: 12px;
+        border-top: 1px solid #444;
+        text-align: left;
+      }
+
+      thead tr {
+        background-color: #444;
+      }
+
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      button, input, textarea {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #2ecc71;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #27ae60;
+      }
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet", href="/css/login.css")
+    link(rel="stylesheet", href="/css/dashboard.css")
+
+  body
+  
+    include layout/header.jade   
+    // header tampil di semua halaman
+
+    block content                
+    // ini untuk isi dari dashboard.jade, dll
+

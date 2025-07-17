@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0b0c2a, #1c1e4e);
+  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background: #13152e;
+  padding: 30px 20px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar .logo {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 20px 0;
+}
+
+.nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #3a3f74;
+  color: #00ccff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #00ccff;
+}
+
+.role-label {
+  margin-bottom: 40px;
+  color: #aaa;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 204, 255, 0.2);
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.card h2 {
+  color: #00bfff;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #ccc;
+  margin-bottom: 25px;
+}
+
+.button {
+  display: inline-block;
+  background: #00bfff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background: #009ace;
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 15px;
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 204, 255, 0.1);
+}
+
+.stat-box h3 {
+  font-size: 2rem;
+  color: #00ccff;
+  margin: 0;
+}
+
+.stat-box p {
+  margin-top: 10px;
+  color: #bbb;
+}
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a2e;
+  border-radius: 8px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+a:hover {
+  opacity: 0.85;
+}

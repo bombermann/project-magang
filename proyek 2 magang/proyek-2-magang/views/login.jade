@@ -1,0 +1,123 @@
+//- doctype html
+//- html
+//-   head
+//-     title= title
+//-   body
+//-     h1 Login
+//-     if error
+//-       p(style="color:red") #{error}
+//-     form(action="/auth/login" method="POST")
+//-       label(for="email") Email:
+//-       input(type="email" name="email" required)
+//-       br
+//-       label(for="password") Password:
+//-       input(type="password" name="password" required)
+//-       br
+//-       button(type="submit") Login
+
+extends layout
+
+block content
+  .container
+    .login-container
+      .left-panel
+        h1 HAI!! 🧑🏻‍🚀
+        p WELCOME TO SPACE✨
+
+        if error
+          .error-message #{error}
+
+        form(action="/auth/login", method="POST")
+          .form-group
+            label(for="username") Your Email
+            input(type="text", name="username", required, placeholder="Enter your email")
+
+          .form-group
+            label(for="password") Password
+            input(type="password", name="password", required, placeholder="Enter your password")
+
+          .form-group
+            .g-recaptcha(data-sitekey="6Le5830rAAAAAPR9G7RTKKKFHtJNfLTa_KnacyOU")
+
+          a.forgot(href="#") Forgot password?
+
+          button.login-button(type="submit") Log In
+
+          p.signup
+            | Don't have an account?
+            a(href="#") Sign up
+
+      .right-panel
+        img.astronaut(src="/images/astronaut.png", alt="Astronaut")
+        .quote
+          h2 🚀 My mission in life is not merely to survive, but to thrive.
+            span LET'S BEGIN ▶
+        
+
+  script(src="https://www.google.com/recaptcha/api.js", async defer)
+
+    //-   p(style="color:red") #{error}
+    //- form(action="./login" method="POST")
+    //-   label(for="email") Email:
+    //-   input(type="email" name="username" required)
+    //-   br
+    //-   label(for="password") Password:
+    //-   input(type="password" name="password" required)
+    //-   br
+    //-   //- tambahin recaptcha
+    //-   .g-recaptcha(data-sitekey="6Le5830rAAAAAPR9G7RTKKKFHtJNfLTa_KnacyOU")
+    //-   br
+    //-   button(type="submit") Login
+    //-   //- ⬇️ Include script reCAPTCHA dari Google
+    //- script(src="https://www.google.com/recaptcha/api.js", async, defer)
+
+
+
+//- extends layout
+//- block content
+//-   .container
+//-     .login-container
+//-       // KIRI - FORM LOGIN
+//-       .left-panel
+//-         h1 SELAMAT DATANG!! 👨‍🚀
+//-         p(style="margin-bottom: 20px") WELCOME TO SPACE✨
+
+//-         if error
+//-           .error-message #{error}
+
+//-         form(action="/auth/login", method="POST")
+//-           .form-group
+//-             label(for="username") Your Email
+//-             input(type="text", name="username", required, placeholder="Enter your email")
+
+//-           .form-group
+//-             label(for="password") Password
+//-             input(type="password", name="password", required, placeholder="Enter your password")
+
+//-           .form-group
+//-             .g-recaptcha(data-sitekey="6Le5830rAAAAAPR9G7RTKKKFHtJNfLTa_KnacyOU")
+
+//-           a.forgot(href="#", style="font-size: 14px; display: block; margin-bottom: 15px; color: #ccc;") Forgot password?
+
+//-           button.login-button(type="submit") 🚀 Log In
+
+//-           p.signup(style="margin-top: 20px")
+//-             | Don't have an account?
+//-             a(href="#", style="color: #2ecc71; text-decoration: none;") Sign up
+
+//-       // KANAN - GAMBAR + SLIDER
+//-       .right-panel
+//-         img#slider-image(src="/images/slider/01.png", alt="Slider", style="width: 100%; max-width: 300px; margin-bottom: 20px;")
+
+//-         .quote
+//-           h2(style="font-size: 18px; color: white; text-align: center;") 🚀 My mission in life is not merely to survive, but to thrive.
+//-           span(style="display: block; text-align: center; font-weight: bold; color: #2ecc71; margin-top: 10px;") LET'S BEGIN
+
+//-         .slider-nav(style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 15px;")
+//-           span#slide-number(style="color: white; font-weight: bold;") 01
+//-           | / 03
+//-           button.nav-button(type="button", id="prev-slide") &larr;
+//-           button.nav-button(type="button", id="next-slide") &rarr;
+
+//-   script(src="https://www.google.com/recaptcha/api.js", async defer)
+//-   script(src="/js/slider.js")
